@@ -62,6 +62,8 @@ class Pool extends EventEmitter {
   constructor(options, Client) {
     super()
     this.options = Object.assign({}, options)
+    console.log(options);
+    console.log(Client);
 
     if (options != null && 'password' in options) {
       // "hiding" the password so it doesn't show up in stack traces
@@ -198,6 +200,8 @@ class Pool extends EventEmitter {
   }
 
   newClient(pendingItem) {
+    console.log(this.options);
+    console.log(this.Client);
     const client = new this.Client(this.options)
     this._clients.push(client)
     const idleListener = makeIdleListener(this, client)
